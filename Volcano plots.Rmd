@@ -1,0 +1,304 @@
+---
+title: "Volcano plot"
+author: "Andri Lemarquis"
+date: "`r format(Sys.Date(), "%B %d, %Y")`"
+output:
+  html_document:
+    self_contained: yes
+    highlight: tango
+    df_print: paged
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    toc_depth: 3
+    keep_md: yes
+    fig_caption: yes
+  html_notebook:
+    self_contained: yes
+    highlight: tango
+    df_print: paged
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+    toc_depth: 3
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+editor_options:
+  chunk_output_type: inline
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message=FALSE, warning=FALSE, result='hold',fig.width=12,tidy=TRUE)
+knitr::opts_knit$set(progress=TRUE,verbose=TRUE)
+```
+<style>
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 { margin-top: 50px }
+p.caption {font-size: 0.9em;font-style: italic;color: grey;margin-right: 10%;margin-left: 10%;text-align: justify}
+</style>
+
+```{r}
+library(EnhancedVolcano)
+```
+
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/Human_Thymus/recirculating.csv")
+```
+
+```{r, fig.width=6, fig.height=6}
+  EnhancedVolcano(df,
+                  title="Recirculating Tregs",
+                  subtitle	="",
+    lab = df$Recirculating.Treg_n,
+    x = 'Recirculating.Treg_l',
+    y = 'Recirculating.Treg_p', xlim = c(-4, 13),ylim = c(3, 150 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-22,
+    FCcutoff = 1.0,
+    pointSize = 1.0,
+    labSize = 3.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 1,
+    encircle="Areg"
+,    legendIconSize = 1.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/Human_Thymus/recirculatingprot.csv")
+```
+
+```{r, fig.width=6, fig.height=6}
+  EnhancedVolcano(df,
+    lab = df$Tregs_n,
+    x = 'Tregs_l',
+    y = 'Tregs_p', xlim = c(-4, 13 ),ylim = c(3, 300 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-22,
+    FCcutoff = 2.0,
+    pointSize = 2.0,
+    labSize = 8.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 12,
+    legendIconSize = 4.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/TyoungD4.csv")
+```
+
+```{r, fig.width=6, fig.height=6}
+  EnhancedVolcano(df,
+                  title="Steady state",
+                  subtitle	="",
+    lab = df$Tregs_n,
+    x = 'Tregs_l',
+    y = 'Tregs_p', xlim = c(-4, 13),ylim = c(3, 300 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-32,
+    FCcutoff = 2.0,
+    pointSize = 4.0,
+    labSize = 8.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 12,
+    encircle="Areg"
+,    legendIconSize = 4.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/TyoungD7.csv")
+```
+```{r, fig.width=7, fig.height=7}
+  EnhancedVolcano(df,
+    lab = df$Tregs_n,
+    x = 'Tregs_l',
+    y = 'Tregs_p', xlim = c(-4, 13 ),ylim = c(3, 300 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-32,
+    FCcutoff = 2.2,
+    pointSize = 3.0,
+    labSize = 8.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 12,
+    legendIconSize = 4.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/ToldD0.csv")
+```
+```{r, fig.width=7, fig.height=7}
+  EnhancedVolcano(df,
+    lab = df$Tregs_n,
+    x = 'Tregs_l',
+    y = 'Tregs_p', xlim = c(-4, 13 ),ylim = c(3, 300 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-32,
+    FCcutoff = 2.2,
+    pointSize = 3.0,
+    labSize = 8.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 12,
+    legendIconSize = 4.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/ToldD1.csv")
+```
+```{r, fig.width=7, fig.height=7}
+  EnhancedVolcano(df,
+    lab = df$Tregs_n,
+    x = 'Tregs_l',
+    y = 'Tregs_p', xlim = c(-4, 13 ),ylim = c(3, 300 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-32,
+    FCcutoff = 2.2,
+    pointSize = 3.0,
+    labSize = 8.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 12,
+    legendIconSize = 4.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/ToldD4.csv")
+```
+```{r, fig.width=7, fig.height=7}
+  EnhancedVolcano(df,
+    lab = df$Tregs_n,
+    x = 'Tregs_l',
+    y = 'Tregs_p', xlim = c(-4, 13 ),ylim = c(3, 300 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-32,
+    FCcutoff = 2.2,
+    pointSize = 3.0,
+    labSize = 8.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 12,
+    legendIconSize = 4.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+
+```{r}
+df= read.csv("/Users/xleana/Desktop/ToldD7.csv")
+```
+```{r, fig.width=7, fig.height=7}
+  EnhancedVolcano(df,
+    lab = df$Tregs_n,
+    x = 'Tregs_l',
+    y = 'Tregs_p', xlim = c(-4, 13 ),ylim = c(3, 300 ),
+    xlab = bquote(~Log[2]~ 'fold change'),  
+        pCutoff = 10e-32,
+    FCcutoff = 2.2,
+    pointSize = 3.0,
+    labSize = 8.0,
+    colAlpha = 1,
+    legendPosition = 'top',
+    legendLabSize = 12,
+    legendIconSize = 4.0,
+    drawConnectors = TRUE,
+    widthConnectors = 0.75,gridlines.major = FALSE,
+    col=c('#0C134F', '#0C134F', '#0C134F', 'red'),
+    gridlines.minor = FALSE)
+```
+
+
+
+```{r}
+
+
+#rownames(df) <- df$primerid
+# Make your plot an modify cit-offs for log2FC and P value
+# specify title, adjust points and label size
+volcano_plot <- EnhancedVolcano(df,
+ lab = df$Tregs_n,
+pCutoff = 0.03,
+ FCcutoff = 0.3,
+ x = 'Tregs_l',
+ y = 'Tregs_p',
+pointSize = 1,
+ legendLabSize = 10,
+ xlim = c(-3, 5 ),
+ ylim = c(0, 15),
+ labSize = 3.0)
+volcano_plot
+```
+
+
+```{r}
+  library(EnhancedVolcano)
+
+```
+
+```{r}
+ EnhancedVolcano(de,
+    lab = rownames('Negative_n'),
+    x = 'Negative_l',
+    y = 'Negative_p')
+```
+
+```{r}
+install.packages("airway")
+```
+
+```{r}
+  library(airway)
+  library(magrittr)
+
+  data('airway')
+  airway$dex %<>% relevel('untrt')
+```
+
+```{r}
+    
+```
+
+
+
+
+
+
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
